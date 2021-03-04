@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Univercity {
+public class University {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -27,9 +27,6 @@ public class Univercity {
 
 	@Column
 	private String universityAddress;
-
-	public Univercity() {
-	}
 
 	public Integer getId() {
 		return id;

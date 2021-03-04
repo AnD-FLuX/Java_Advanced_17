@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import ua.lviv.lgs.domain.Univercity;
-import ua.lviv.lgs.service.UnivercityService;
+import ua.lviv.lgs.domain.University;
+import ua.lviv.lgs.service.UniversityService;
 
 @SpringBootApplication
 public class Application {
@@ -13,16 +13,16 @@ public class Application {
 	public static void main(String[] args) {
 
 		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
-		UnivercityService service = context.getBean(UnivercityService.class);
+		UniversityService service = context.getBean(UniversityService.class);
 
-		Univercity univercity = new Univercity();
-		univercity.setNameOfUniversity("LvivNathFranko");
-		univercity.setLevelOfAccreditation(8);
-		univercity.setNumberOfInstitutes(8);
-		univercity.setNumberOfStudents(500);
-		univercity.setUniversityAddress("Lviv");
+		University university = new University();
+		university.setNameOfUniversity("LvivNathFranko");
+		university.setLevelOfAccreditation(8);
+		university.setNumberOfInstitutes(8);
+		university.setNumberOfStudents(500);
+		university.setUniversityAddress("Lviv");
 
-		service.save(univercity);
+		service.save(university);
 		
 		System.out.println();
 		System.out.println("     ----------- Find ALL -----------");
@@ -30,13 +30,13 @@ public class Application {
 		System.out.println("     ----------- Find by ID ---------");
 		System.out.println(service.findById(1));
 		System.out.println("     ----------- Find By name Of University -----------");
-		System.out.println(service.findBynameOfUniversity("Ukraine"));
+		System.out.println(service.findBynameOfUniversity("LvivNathFranko"));
 		System.out.println("     ----------- Find By level Of Accreditation -----------");
 		System.out.println(service.findBylevelOfAccreditation(8));
 		System.out.println("     ----------- Update -----------");
-		Univercity updateUnivercity = service.findById(1);
-		updateUnivercity.setNumberOfStudents(999999);
-		service.update(updateUnivercity);
+		University updateUniversity = service.findById(1);
+		updateUniversity.setNumberOfStudents(999999);
+		service.update(updateUniversity);
 		System.out.println(service.findById(1));
 		
 		service.deleteById(4);
